@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
+    <meta name="theme-color" content="#222">
+    <title>Product Flashcards</title>
+    <style>
+    
+    body {
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+      font-family: Helvetica Neue, sans-serif;
+    }
+
+    .App {
+      text-align: center;
+    }
+
+    .App-header, .App-footer {
+      background-color: #569CFF; 
+      padding: 20px;
+      color: #efefef;
+    }
+
+    h1 {
+      font-size: 40px;
+    }
+
+    .App-body {
+      font-size: large;
+      color: #111;
+      padding: 20px;
+    }
+
+    .App-footer {
+      font-size: small;
+    }
+    </style>
+  </head>
+  <body>
+    <div class="App">
+      <div class="App-header">
+        <h1>Cloud Firewalls</h1>
+        <h2>Product Flashcards</h2>
+        <p>Quiz your DigitalOcean product knowledge</p>
+      </div>
+      <div class="App-body" id="root">Generating FlipFlash...</div>
+      <div class="App-footer">
+        Made with love by DigitalOcean
+      </div>
+    </div>
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('service-worker.js');
+      }
+    </script>
+  </body>
+</html>
