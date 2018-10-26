@@ -109,15 +109,18 @@ const answers = [
 function getCount() {
   return questions.length;
 }
+
+function getRandomStateNumber() {
+  return Math.floor(Math.random() * questions.length);
+}
+
 function getQuestion(i) {
   console.log("With question number:"+i);
-
   return <div>Question: <span style={{color: 'red'}}>{questions[i - 1]}</span></div>;
-
 }
 
 function getAnswer(i) {
-  return answers[i - 1];
+  return answers[i];
 }
 // the actual quiz is done, boring stuff follows...
 
@@ -125,18 +128,20 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      question: getQuestion(1),
-      answer: getAnswer(1),
+      nextNumber: getRandomStateNumber(),
+      question: getQuestion(this.state.nextNumber),
+      answer: getAnswer(this.state.nextNumber),
       total: getCount(),
-      i: 1,
+      i: 0,
     };
   }
   
   nextQuestion() {
     this.setState({
-      question: getQuestion(this.state.i + 1),
-      answer: getAnswer(this.state.i + 1),
-      i: this.state.i + 1,
+      nextNumber: getRandomStateNumber(),
+      question: getQuestion(this.state.nextNumber),
+      answer: getAnswer(this.state.nextNumber),
+      i: this.state.nextNumber,
     });
   }
   
@@ -207,8 +212,8 @@ class Flashcard extends Component {
 }
 
 const Count = ({i, total}) =>
-  <div>
-    Question {i} / {total}
-  </div>;
+   <div>
+     Question {i} / {total}
+   </div>;
 
 export default App;
